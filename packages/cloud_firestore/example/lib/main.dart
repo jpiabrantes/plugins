@@ -33,8 +33,12 @@ class MessageList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: firestore.collection('messages').snapshots(),
+      stream: firestore.collection('invalid').where('message', isEqualTo: 'Hello world 2!').snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        print('builder - snapshot: $snapshot');
+        if (snapshot.hasError) {
+          print('error received: ${snapshot.error.toString()}');
+        }
         if (!snapshot.hasData) return const Text('Loading...');
         final int messageCount = snapshot.data.documents.length;
         return ListView.builder(
@@ -64,7 +68,7 @@ class MyHomePage extends StatelessWidget {
 
   Future<void> _addMessage() async {
     await messages.add(<String, dynamic>{
-      'message': 'Hello world!',
+      'message': 'Hello world 2!',
       'created_at': FieldValue.serverTimestamp(),
     });
   }
