@@ -3,9 +3,7 @@
 // found in the LICENSE file.
 
 @import Flutter;
-@import OCMock;
 @import XCTest;
-@import webview_flutter;
 
 #import <XCTest/XCTest.h>
 
