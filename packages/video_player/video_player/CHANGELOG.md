@@ -1,3 +1,7 @@
+## 0.10.8+3
+
+* Update texture on iOS when `seekTo` is invoked.
+
 ## 0.10.8+2
 
 * Replace deprecated `getFlutterEngine` call on Android.
